@@ -1,0 +1,158 @@
+Option Base 1
+
+
+
+Sub Getting_started()
+    Cells(1, 1).value = "application.username"
+    Columns("A:A").EntireColumn.AutoFit
+    Range("A1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+    End With
+End Sub
+
+
+
+
+Sub sharpe_ratio()
+Dim Rf As Byte
+Dim Rg As Byte
+Dim Vl As Integer
+On Error Resume Next
+Rg = InputBox("Input a expected stock return in %.")
+If Rg <= 0 Then
+     MsgBox "Invalid number,the expected stock return must be positive,The procedure will be terminated", vbCritical
+     End
+End If
+     
+Rf = InputBox("Input a risk-free rate of return in %.")
+  If Rf <= 0 Then
+     MsgBox "Invalid number,the risk-free rate must be positive,The procedure will be terminated", vbCritical
+     End
+  End If
+  
+Vl = InputBox("Input a volatility of stock ")
+  If Vl <= 0 Then
+   MsgBox "Invalid number,the volatility must be positive,The procedure will be terminated", vbCritical
+   End
+End If
+
+Dim sr As Variant
+Call sharperatio(Rg, Rf, Vl)
+sr = sharperatio(Rg, Rf, Vl)
+
+Cells(2, 1).value = sr
+Cells(2, 1).NumberFormatLocal = "0.00_ "
+
+End Sub
+
+
+Function sharperatio(Rg As Byte, Rf As Byte, Vl As Integer)
+sharperatio = (Rg / 100 - Rf / 100) / Vl * 100
+End Function
+
+
+
+
+
+
+
+
+Function Standard_deviation(X As Range, y As Boolean) As Single
+MsgBox " y=1 for Sample, otherwise is for Population"
+If y = True Then
+Standard_deviation = Application.WorksheetFunction.StDev_P(X)
+Else
+Standard_deviation = Application.WorksheetFunction.StDev_S(X)
+End If
+End Function
+Function IDENTITY_MATRIX(ORDER As Byte)
+Dim dynMatrix(1 To ORDER, 1 To ORDER) As Single
+Range(ActiveCell, ActiveCell.End(xlUp)).Select
+Range(ActiveCell, ActiveCell.End(xlDown)).Select
+Range(ActiveCell, ActiveCell.End(xlRight)).Select
+Range(ActiveCell, ActiveCell.End(xlLeft)).Select
+Dim ORDER As Byte
+n = lastrow - ORDER
+m = lastcolumn - ORDER
+ReDim dynMatrix(1 To n, 1 To m)
+dynMatrix(row, column) = Range.Select.Cells(row, column).value
+
+End Function
+
+
+
+
+
+
+Sub AUTO_OPEN()
+Dim Password As String * 8
+Dim Password1 As String * 8
+On Error GoTo E
+Password = InputBox("Input a password with 8 letters,maximum.", "New password")
+Password1 = InputBox("Input again.")
+If Password <> Password1 Then
+MsgBox "put twice the same", vbCritical
+End
+Else
+    Application.DisplayAlerts = False
+     ThisWorkbook.SaveAs ThisWorkbook.FullName, , ""
+    Application.DisplayAlerts = True
+End If
+End
+E:
+MsgBox "Invalid input"
+End Sub
+
+
+
+
+
+
+Sub VALUATION()
+Dim year As Integer, i As Integer
+Dim Yield_Data() As Single, Project_Data() As Single
+Dim value As Single
+
+
+MsgBox " The last year in the yield table must be equal to or greater than the last year in the project table.The cash flows must be non-negatives,The first year will start at year 1"
+On Error GoTo msg
+year = InputBox("The years your project last for") + 1
+
+If year > 0 Then
+ ReDim Yield_Data(year, 2) As Single
+ ReDim Project_Data(year, 2) As Single
+ For i = 1 To year
+  Yield_Data(i, 1) = i
+  Yield_Data(i, 2) = InputBox("the yield for the year in %" & i)
+  If Yield_Data(i, 2) < 0 Then GoTo msg
+  Next i
+If year <= 0 Then GoTo msg
+
+Project_Data(1, 2) = InputBox("please tell me your initial investment(negative)")
+If Project_Data(1, 2) > 0 Then GoTo msg
+
+For i = 1 To year - 1
+  Project_Data(i, 1) = i - 1
+  Project_Data(i, 2) = InputBox("please tell me the cash flow for the " & i & "th years")
+  If Project_Data(i, 2) < 0 Then GoTo msg
+  Next i
+
+End If
+
+For i = 1 To year - 1
+value = value + (Project_Data(i + 1, 2) / (Yield_Data(i, 2) + 1)) - Project_Data(1, 2)
+Next i
+
+MsgBox ("the present value of your project is " & value)
+
+End
+
+msg:
+MsgBox ("bad input, have a new try")
+End Sub
+
+
+

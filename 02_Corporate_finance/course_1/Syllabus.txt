@@ -1,0 +1,188 @@
+Corporate Finance
+
+Course subject and goal
+The focus of this course is on international corporate finance. The current state of global markets’ volatility
+has a serious impact on “perceived” and inherent corporate valuations. Furthermore, the current wave of
+financial scandals in Europe, the U.S., and elsewhere has alerted investors about the lack of efficient
+mechanisms of corporate control across countries. To face these challenges, the course focuses on setting
+up the framework for understanding how financial contracts are written around the world and how these
+contracts affect basic corporate policies. Differences in institutional characteristics have recently been
+shown to be key determinants of how corporations are owned and valued, as well as how they raise capital
+and give it back to investors.
+
+In this course, we will analyze: (1) What are best corporate governance practices?; (2) How are corporations
+owned?; (3) How can we understand Mergers and Acquisitions?; (4) How do firms determine their pay-out
+policies; (5) What is the role of financial contracting in mitigating opportunistic behaviour?; and (6) How
+do firms finance themselves across countries?
+
+Teaching method
+The course will be graded on participation, exam, presentation and casework. Illustrative cases will be
+developed in groups and discussed in class. Teams presenting their case solutions in class will get higher
+grades.
+
+Topics
+This course is intended for students who plan to be involved at various stages of the investment and
+financing processes of international projects. Financial contracting has implications for entrepreneurs in the
+international arena, transaction advisors (investment bankers, commercial bankers, or consultants),
+corporate sponsors (members of private equity and venture capital firms, corporate finance and strategic
+planning departments), research analysts, international investors and money managers. The course is also
+appropriate for students seeking to deepen their understanding of corporate and entrepreneurial finance
+inside and outside Europe and the United States. The course topics are detailed below.
+
+Meeting
+Day
+Date
+Assignment
+1
+Monday
+January 30
+Agency & Corporate Governance (part 1)
+2
+Thursday
+February 2
+Agency & Corporate Governance (part 2)
+Ownership Structures
+3
+Tuesday
+February 6
+Case: Koito Ltd.
+4
+Monday
+February 13
+9h30 to 12h30
+Mergers and Acquisitions
+5
+Friday
+February 17
+Case: Samsung Electronics
+6
+Tuesday
+February 21
+Raising Capital Lecture
+Dividend Policy (part 1)
+7
+Friday
+February 24
+Case: Perrier
+8
+Monday
+March 12
+Dividend Policy (part 2)
+9
+Friday
+March 16
+Case: Huaneng Power
+10
+Friday
+March 19
+Case: Alphatec
+Wrap up Lecture
+
+Cases
+There are several cases that will be part of your grade.
+
+You are expected to have prepared your case in groups and to have turned in your answers (via the
+procedure outlined below) 10 minutes BEFORE the beginning of the first lecture where the case will
+be discussed (see the specifics under each case). I recommend that you also bring an additional
+printout of your answers into class to work through our discussion, ask questions to the groups that
+are presenting, and take further notes.
+
+The answers to the case have to be in one single PDF file (which can incorporate what ever
+documents you want from word, excel, pictures, photocopies, power-points, etc…). You can use
+whatever you want to use to answer the questions and back up your answers. But the important thing
+is that you put all of those documents together in one single PDF file per group. So, remember: only
+one file per group per case.
+
+All groups need to turn in answers to all cases The only exception will be for the groups that are
+presenting orally a specific case. The groups that are orally presenting a specific case should turn in
+their power-point answers. They will count as the equivalent of the pdf that the rest of the groups are
+turning in.
+
+Case discussions and oral presentations
+Each group will be required to present orally at least one case (depending on the number of groups in
+each class). I am allowing groups to choose the case they want to present on a first-come-first-served
+basis. So, in the same email where you sent me the name of the people that form your group, you
+should also rank the cases according to your preference for presenting orally to the class. As I said
+above, I will assign case presentations on a first-come-first-served basis as much as possible, but you
+may not be able to get your first choice. If by the second lecture you have not given me the
+information, I will assign you to groups randomly and/or chose the case that you will present.
+
+For the case discussions in class, the groups that are presenting need to prepare a power point
+presentation (which can include excel calculations, pictures, pdfs, etc…). This power point should
+include all your answers to the case and should be turned in before class in the exact same schedule as
+the rest of the class is turning in the written answers to the case (see below for the specific dates and
+times). There will be several groups preparing each case for presentation in class at each time,
+depending on the number of students, etc...
+
+The rest of the students who are not presenting the case, are expected to be ready to participate
+actively in questioning the results presented by the other groups and making additional contributions.
+Participation is part of the final grade and a good participation through the course could earn you
+extra points
+
+You are expected to have read and prepared all the readings and the cases BEFORE coming to class.
+Meetings 1 and 2: (January 30 and February 2, 2012)
+Agency and Corporate Governance
+ Welch: Chapter 24, Corporate Governance
+ The Law of the Market, The Economist.
+ Check the Laws before You Invest Abroad, The Economist.
+ La Porta, Lopez-de-Silanes, Shleifer and Vishny, “Investor Protection and Corporate
+Governance,” Journal of Financial Economics, 2001.
+ Kaplan and Mitton, "How has CEO Turnover Changed?", 2008.
+Firm Ownership Structures:
+ La Porta, Lopez-de-Silanes and Shleifer, “Corporate Ownership around the World,” Journal of
+Finance, 2000.
+ Bertrand, et al, “Ferreting out Tunneling: An Application to Indian Business Groups, Journal of
+Finance, 2002.
+
+Meeting 3: (February 6, 2012)
+Case: case due for all groups by 2:00 pm
+ Case: “Koito Manufacturing Ltd. And T.B. Pickens,” HBS Case # 9-291-027 (The U.S. versus
+Japan).
+
+Meeting 4: (February 13, 2012: from 9h30 to 12h30)
+Mergers and Acquisitions
+
+Grimbalt and Titman, “Financial Markets and Corporate Strategy,” McGraw-Hill Irwin, chapter
+19: Mergers and Acquisitions.
+
+Meeting 5: (February 17, 2012)
+Case: case due by 09:30 am
+ Case: “Samsung Electronics,” (U.S. versus Japan).
+
+Meeting 6: (February 21, 2012)
+Raising Capital: Issuing Equity in Global markets:
+ BM: Chapter on: How Corporations Issue Securities
+ Karolyi, G. Andrew., “The World of Cross-listings and Cross-listings of the World:
+Challenging Conventional Wisdom,” Fisher College of Business working paper, August 2004.
+ Maybe US Markets are still Supreme, Wall Street Journal.
+ Doidge, Karolyi, and Stulz, “Has New York become less competitive in global markets?
+Evaluating foreign listing choices,” Fisher College of Business Working Paper WP 2007-9, April
+2007.
+Dividend Policy: Dividends are Irrelevant (part 1)
+ BM: Chapter on: The Dividend Controversy/Policy.
+ Welch: Chapter 19: Equity Payouts, Dividends and Share Repurchases
+ La Porta, Lopez-de-Silanes, Shleifer and Vishny, “Agency Theory and Dividend Policy around
+the World,” Journal of Finance, 1999.
+
+Meeting 7: (February 24, 2012)
+Case: case due for all groups by 09:00 am
+ Case: “Perrier, Nestle and the Agnellis,” Thunderbird American Graduate School of
+International Management, Case # A06-98-0016.
+
+Meeting 8: (March 12, 2012)
+Dividend Policy: Dividends are Relevant (part 2)
+ BM: Chapter on: The Dividend Controversy/Policy.
+ Welch: Chapter 19: Equity Payouts, Dividends and Share Repurchases
+ La Porta, Lopez-de-Silanes, Shleifer and Vishny, “Agency Theory and Dividend Policy around
+the World,” Journal of Finance, 1999.
+
+Meeting 9: (March 16, 2012)
+Case: Case due for all groups by 09:00 am
+ Case: Foerster, Steve R., Andrew Karolyi, Jerry White., “Huaneng Power International, Inc.:
+Raising Capital in Global Markets,” IVEY Case #98N001
+
+Meeting 10: (March 19, 2012)
+Case: case due for all groups by 17:30 pm
+ Case: Fagan, Foley and Gilson, “Alphatec Electronics Pcl,” Harvard Business School Case #
+9-200-004.
+ Final Wrap up: International Corporate Finance and Governance in the Future

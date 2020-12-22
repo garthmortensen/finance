@@ -1,0 +1,17 @@
+﻿state of economy,probability,Rate of Return A,weighted returns a,(x - xbar),(x - xbar)^2,p(x - xbar)^2,Rate of Return B,weighted returns b,(y - ybar),(y - ybar)^2,p(y - ybar)^2,,(x - xbar)(y - ybar)
+recession,0.1,-0.08,-0.008,-0.12,0.0144,0.00144,-0.2,-0.02,-0.275,0.075625,0.0075625,,0.033
+normal,0.5,0.03,0.015,-0.01,1E-04,5E-05,0.05,0.025,-0.025,0.000625,0.0003125,,0.00025
+good,0.3,0.09,0.027,0.05,0.0025,0.00075,0.15,0.045,0.075,0.005625,0.0016875,,0.00375
+boom,0.1,0.12,0.012,0.08,0.0064,0.00064,0.3,0.03,0.225,0.050625,0.0050625,,0.018
+,Sum =,0.04,0.046,varx  = ,0.00585,Sum =,0.075,0.08,,vary = ,0.00365625,sum =,0.055
+,,weighted average  returns a,0.0115,stdx =,0.076485293,,weighted average  returns b,0.02,,stdy =,0.060466933,covxy =,0.01375
+,,,,,,,,,,,,correlationxy = ,2.973081561
+,,,,,,,,,,,,,
+portfolio expected returns,weight A,weight B,,,,,,,,,,,
+,0.0046,0.012,,,,,,,,,,,
+returns,0.0166,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,0.000936,0.00131625,0.0066,,,,,,,,,,
+"Portfolio variance = (weight(1)^2*variance(1) + weight(2)^2*variance(2) + 2*weight(1)*weight(2)*covariance(1,2)",,,,,,,,,,,,,
+"Portfolio variance = (weight(1)^2*variance(1) + weight(2)^2*variance(2) + 2*weight(1)*weight(2)*covariance(1,2)",0.00885225,,,,,,,,,,,,
+,,,,,,,,,,,,,

@@ -1,0 +1,728 @@
+Beginning the UCSD_GARCH demo program.  This program is designed to
+help you get a basic feel for the programs included, but does not show all
+functionality.  Please press a key to continue.
+
+We will begin by simulatig a simple univariate GARCH process with normal innovations.
+The command to do this is:
+
+[x,h]=garchsimulate([.01; .2; .75],1,1,1000)
+
+where x is the output data series, h is the output conditional variances, the vector [.01; .04; .94]
+represents the constant, arch and garch parameters, the two 1s represent the arch and garch orders.
+and 500 is the amount of output desired.
+
+We shoudl test out data for the presense of GARCH.  This can be done by calling lmtest2
+[statistic, pval] = lmtest2(x,5)
+where statistic is the estimated statistic and pval are the associated probabilities the squares of the residuals are independent.
+   Statistic    P-Value 
+1    26.3204     0.0000 
+2    62.4061     0.0000 
+3   101.8462     0.0000 
+4   183.7058     0.0000 
+5   184.3602     0.0000 
+
+You should reject the null of no autocorrelation in the squares at the 10 percent level. 
+Now we can fit the data using the GARCHPQ proceedure
+Please press a key to continue.
+
+The command to do this is:
+
+[parameters, likelihood, stderrors, robustSE, ht, scores, grad]=garchpq(x,1,1)
+ 
+
+ 
+ Press any key to estimate the model 
+ 
+Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In garchpq at 135
+  In ucsd_garch_demo at 40
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 3
+
+Functions 
+ Objective and gradient:               garchlikelihood
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      1      375.364     -0.01457                                         
+    1      9      375.247     -0.01434       0.0156        -98.1    1.04e+003   
+    2     15      375.226      -0.0147       0.0625        -27.4          109   
+    3     18      372.743    -0.007348          0.5        -47.3     1.4e+003   
+    4     23      372.263    -0.007544        0.125        -42.7          278   
+    5     31      372.263    -0.007885       0.0156        -2.48          363   
+    6     33      372.211    -0.007866            1        -36.6         70.3   
+    7     35      372.204    -0.007677            1        -7.08         12.4   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+ 
+ Press any key to continue the demo 
+ 
+The estimated constant parameter from this model is: 0.0077 
+The estimated ARCH parameter from this model is: 0.1536 
+The estimated GARCH parameter from this model is: 0.7940 
+The standard T-statistics for these three parameters are 2.9570,  5.1641,  and 20.8558  respectively.
+and the Robust T-statistics for these three parameters are 2.9606,  5.2893,  and 20.7808  respectively.
+Now we'll plot the data, the estimated standard deviations, and the standardized residuals
+ 
+ Press any key to continue the demo 
+ 
+Finally, we can test our standardized residuals for GARCH using lmtest2
+[statistic, pval] = lmtest2(x./sqrt(ht),5)
+   Statistic    P-Value 
+1     0.1915     0.6617 
+2     0.4734     0.7892 
+3     1.1611     0.7623 
+4     2.3611     0.6697 
+5     5.2734     0.3834 
+
+
+As you can see, we fail to reject the null that the standardized resiudals have autocorrelation in squares.
+
+
+ 
+ Press any key to continue the demo
+ 
+We can also do a test that the data are from a normal distribution with unknown mean and variance.
+This test uses the function lilliefors.
+The calculated statistic was 0.0372, with the critical value at the 5 percent level at 0.0255 
+We reject the null that the data are from a normal distribution with unknown mean and variance
+
+ 
+ Press any key to continue the demo 
+We can perform a KS test on the standardized data to test that it is standard normal.
+We call this test by [statistic, siglevel, H]=kolmorgorov(x./sqrt(ht),.05,'norm_cdf').
+The calculated statistic is 0.0169 with an asymptotic significance level of 0.9368.
+
+This concludes the first portion of the demo.  The next portion will cover the fattailed_garch and the multigarch programs
+
+We will not simulate some data from the T-distribution, with 6 d.f. using the following command.  
+
+[x,h]=fattailed_garchsimulate([.01 .05 .8 6]',1,1,1000,'STUDENTST')
+
+ 
+ Press any key to continue the demo
+And we can now fit a garch model with different types of innovations wo the generated data.
+We will begin by fittering a model with normal errors using:
+[parameters, likelihood, stderrors, robustSE, ht, scores] = fattailed_garch(x , 1 ,1 , 'NORMAL')
+Press any key to continue the demo 
+ 
+Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In fattailed_garch at 198
+  In ucsd_garch_demo at 97
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 3
+
+Functions 
+ Objective:                            fattailed_garchlikelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      4      121.668    -0.006714                                         
+    1     31      116.031    -0.007757    1.19e-007   -8.74e+003    2.41e+003   
+    2     37      112.036     -0.01925         0.25         -145       4e+003   
+    3     42       109.33     -0.01344          0.5        -45.5    3.28e+003   
+    4     49      109.116     -0.01423        0.125         -575     4.5e+003   
+    5     55      108.148     -0.02317         0.25        -37.6    1.02e+003   
+    6     59      105.265     -0.01423            1        -25.9          153   
+    7     64      105.105      -0.0119          0.5        -9.03          572   
+    8     68      105.035     -0.01176            1        -32.6         71.4   
+    9     72      105.031     -0.01155            1        -2.46          4.5   
+   10     76      105.031     -0.01162            1       -0.288         4.21   
+   11     80      105.031     -0.01162            1        -0.11        0.446  Hessian modified  
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+We can now fit models using T-distributed errors using:
+[parametersT, likelihoodT, stderrorsT, robustSET, htT, scoresT] = fattailed_garch(x , 1 ,1 , 'STUDENTST')
+
+ 
+ Press any key to continue the demo 
+
+Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In fattailed_garch at 198
+  In ucsd_garch_demo at 102
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 4
+
+Functions 
+ Objective:                            fattailed_garchlikelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          4
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      5      106.701    -0.006714                                         
+    1     33       103.48    -0.007472    1.19e-007   -6.36e+003    2.29e+003   
+    2     40      97.7275     -0.01897         0.25         -133    3.24e+003   
+    3     46      95.3574     -0.01355          0.5        -12.7    2.67e+003   
+    4     55      93.2483     -0.01417       0.0625        -6.53    1.71e+003   
+    5     63      93.0063     -0.01841        0.125        -7.35          437   
+    6     68      91.9969     -0.01416            1        -12.7          665   
+    7     74       91.564     -0.01103          0.5        -2.96          453   
+    8     79      91.3652     -0.01073            1       -0.438         68.4   
+    9     84      90.0931     -0.01092            1       -0.352    1.16e+003   
+   10     90      86.1338     -0.01206          0.5       -0.322    2.75e+003   
+   11     97      85.2253     -0.01275         0.25       -0.464    3.07e+003  Hessian modified  
+   12    102      83.7211     -0.01583            1        -2.03    1.96e+003   
+   13    107      82.2637     -0.01556            1        -2.56          390   
+   14    112       81.666     -0.01227            1       -0.909          287   
+   15    117      81.4017     -0.01254            1       -0.708         98.8   
+   16    122      81.3692     -0.01199            1       -0.242           43   
+   17    127      81.3659     -0.01157            1       -0.595         83.9   
+   18    132      81.3646     -0.01165            1       -0.246         20.5   
+   19    137      81.3644     -0.01162            1       -0.031         5.25   
+   20    142      81.3644      -0.0116            1       -0.016        0.864  Hessian modified  
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+We can initially compare the estimation by a likelihood ratio test, as the T asymptotically nests the normal.
+The likelihood ratio is -2*(likelihood-likeilhoodT)=47.3336 and the pval is 0.0000
+Finally, we can estimate a GED GARCH model using:
+[parametersGED, likelihoodGED, stderrorsGED, robustSEGED, htGED, scoresGED] = fattailed_garch(x , 1 ,1 , 'GED')
+And we can plot the three estimated variances.  They should all be the same as they are all consistent in a QMLE sense for the true variance
+
+ 
+ Press any key to continue the demo 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 4
+
+Functions 
+ Objective:                            fattailed_garchlikelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          4
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      5      101.703    -0.006714                                         
+    1     33       98.171    -0.007501    1.19e-007    -6.6e+003    2.53e+003   
+    2     40      90.7944     -0.01889         0.25         -127    3.42e+003   
+    3     47      89.0245     -0.01442         0.25        -27.2    3.52e+003   
+    4     55      88.1175     -0.01587        0.125         -203    1.52e+003   
+    5     62       86.954      -0.0151         0.25        -29.3    2.69e+003   
+    6     70      86.0174     -0.01864        0.125          -35          278   
+    7     76      85.2452     -0.01376          0.5        -16.2          734   
+    8     81      84.9505     -0.01164            1        -20.3          199   
+    9     86       84.678     -0.01254            1        -13.2         26.2   
+   10     91      84.6634     -0.01187            1        -2.13         95.5   
+   11     96      84.6609     -0.01176            1        -1.81           12   
+   12    101      84.6608     -0.01176            1       -0.372          0.3   
+   13    106      84.6608     -0.01177            1      -0.0303       0.0345  Hessian modified  
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+ 
+We can now examine the estimated parameters of the models
+             Normal     T-dist        GED 
+CONSTANT     0.0116     0.0116     0.0118 
+ARCH         0.0834     0.0806     0.0830 
+GARCH        0.7420     0.7461     0.7395 
+SHAPE        3.0000     8.3621     1.5232 
+
+
+ and the estimated robust standard errors
+             Normal     T-dist        GED 
+CONSTANT     2.6491     2.4395     2.6516 
+ARCH         3.5657     3.4933     3.5407 
+GARCH        9.1994     8.5951     8.9836 
+SHAPE        3.0000     6.2373    23.2278 
+
+Unfortunately we cannot compare the GED and the T GARCHes by standard LR tests as they are not nested
+We can however test the null that the errors are from a the given distribution using the KS Test
+We will call the KS test 3 times using [statistic, siglevel, H]=kolmorgorov(x,pval,dist,varargin)
+
+The results fo the Kolmogorov Smirnov Test for each of the distributions are:
+
+             Statistic    Asymp Pvalue    Reject Null? 
+Normal          0.0274          0.0974          0.0000 
+T-dist          0.0141          0.8217          0.0000 
+GED             0.0181          0.5248          0.0000 
+
+
+
+ 
+ Press any key to continue the demo or CTRL-C to quit.
+ 
+The final potion of the demo will be using real data.The data was provided by Andrew Patton 
+ and was used in thepaper,'The conditional Copula in Finance'
+The data set consists of two data series, US-DM and US-Yen Exchange rates.
+The data are 100 times the log diference, and span Jan 1990 throught Dec 1999.
+Multiplying by 100 makes some of the lower bounds easier to work with when the series volatility is very small.
+Press any key for a plot of the data.
+ 
+ 
+We can check for autocorrelation in the mean using lmtest1 We will be workign with the US-DM data set.
+You call this function in the same way you call lmtest2
+
+   Statistic    P-Value 
+1     4.3244     0.0376 
+2     4.1932     0.1229 
+3    11.2423     0.0105 
+4    10.8829     0.0279 
+5    10.9798     0.0518 
+
+
+As you can see, we have autocorrelation in the residual.  To remove this, we can use ARMAXFILTER
+
+ [parameters, stderrors, robustSE, SEregression, errors, LLF, scores, likelihoods]= ... 
+            armaxfilter(y,1,1,1);
+Press any key to estimate.
+
+Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In armaxfilter at 124
+  In ucsd_garch_demo at 172
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 3
+
+Functions 
+ Objective:                            armaxfilter_likelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      4      2778.39      -0.9579                                         
+    1     18      2778.39      -0.9579     0.000977        -1.58         2.47   
+    2     25      2778.36      -0.8382        0.125        -1.11         7.18   
+    3     37      2778.36      -0.8349      0.00391        -1.31         5.21   
+    4     42      2778.34      -0.9188          0.5       -0.847         2.96   
+    5     46      2778.33      -0.8866            1       -0.548        0.366   
+    6     50      2778.33      -0.8857            1      -0.0686      0.00162   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+ We estimated an ARMA(1,1) model and noe the lmtest1 on the errors shows:
+   Statistic    P-Value 
+1     0.0002     0.9892 
+2     0.0051     0.9974 
+3     6.6390     0.0843 
+4     6.8195     0.1457 
+5     6.3831     0.2707 
+
+And thus no residual autocorrelation at the 5% level.
+Press any key to continue.We can now fit a GARCH model to the data.
+We will start with a typical garch with normal errors
+[parameters, likelihood, stderrors, robustSE, ht, scores] = fattailed_garch(errors , 1 , 1 , 'NORMAL')
+Press any key to estimate.Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In fattailed_garch at 198
+  In ucsd_garch_demo at 186
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 3
+
+Functions 
+ Objective:                            fattailed_garchlikelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      4      2625.85     -0.05348                                         
+    1     25      2625.49     -0.05578    7.63e-006         -302          125   
+    2     30      2613.23     -0.02789          0.5         -113          591   
+    3     36      2610.65     -0.02355         0.25         -187     1.1e+003   
+    4     41      2606.35     -0.01304          0.5         -438          310   
+    5     47      2605.92    -0.009781         0.25        -49.1          500   
+    6     55      2605.64     -0.01123       0.0625         -175          153   
+    7     66      2605.63     -0.01169      0.00781        -10.4          194   
+    8     71      2605.61     -0.01163          0.5        -52.4         23.8   
+    9     75       2605.6     -0.01137            1          -20         3.47   
+   10     79       2605.6     -0.01142            1        -3.69        0.216   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+
+We can now test to see if the residuals are conditionally normal using kolmogorov as detailed earlier.
+We call this test by [statistic, siglevel, H]=kolmorgorov(errors./sqrt(ht),.05,'norm_cdf').
+The calculated statistic 0.0557 was with a sig level of 0.0000.  
+Thus we reject the null that the model is adequate.
+We can now see if a more complicated variance estimation will be sufficient, the Asymetric Power Garch.
+We can call this type of GARCH using the multigarch function.
+We call this by: [parametersAP, likelihoodAP, stderrorsAP, robustSEAP, htAP, scoresAP]=multigarch(errors,1,1,'APGARCH','NORMAL')
+
+Press any key to estimate.
+
+
+Press any key to estimate.Warning: Options LargeScale = 'off' and Algorithm = 'trust-region-reflective' conflict.
+Ignoring Algorithm and running active-set algorithm. To run trust-region-reflective, set
+LargeScale = 'on'. To run active-set without this warning, use Algorithm = 'active-set'. 
+> In fmincon at 456
+  In tarch at 149
+  In multigarch at 157
+  In ucsd_garch_demo at 196
+  In run at 57 
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 5
+
+Functions 
+ Objective:                            multigarch_likelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    6
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      6      2659.38    -0.006145                                         
+    1     17       2606.2      -0.0189       0.0313   -1.96e+003    7.75e+003   
+    2     31      2606.06     -0.01967      0.00391          -30          812   
+    3     45      2606.02     -0.02068      0.00391        -11.8          653   
+    4     54      2604.96     -0.02217        0.125        -9.46    1.33e+003   
+    5     62       2603.7      -0.0232         0.25        -31.8    1.12e+003   
+    6     70      2600.57     -0.01905         0.25          -16    1.36e+003   
+    7     79      2600.06     -0.02286        0.125        -27.9          417   
+    8     87      2600.01     -0.01715         0.25        -20.4          188   
+    9     94       2598.8     -0.01359          0.5        -22.3          929   
+   10    100      2598.25     -0.01012            1        -16.3          936   
+   11    106      2597.29    -0.007995            1        -39.7         92.2   
+   12    112      2597.09    -0.005354            1        -7.19          118   
+   13    118      2597.06    -0.005561            1        -2.83         41.5   
+   14    124      2597.05    -0.005191            1        -1.02         86.9   
+   15    130      2597.05    -0.005233            1       -0.809          6.5   
+   16    136      2597.05    -0.005268            1       -0.175         0.47   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+
+We can test if this is better model by using a LR test, -2(likelihood-likelihoodAP)
+The value of this statistic is 17.1097 and the sig level is 0.0002 
+Thus we reject the initial model in favor of the AP GARCH.
+Again, we can test to see if the distribution is sufficient.  We get a statistic of 0.0549 and a pval or 0.0000.
+Again we reject the null fo a correct distribution.  We can now fit a GED Garch using the fattailed_garch function.
+[parametersGED, likelihoodGED, stderrorsGED, robustSEGED, htGED, scoresGED] = fattailed_garch(errors , 1 ,1 , 'GED'
+Press any key to estimate.
+
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 4
+
+Functions 
+ Objective:                            fattailed_garchlikelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    4
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          4
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      5      2569.45     -0.05348                                         
+    1     11      2520.33     -0.02674          0.5         -193    1.27e+003   
+    2     19      2518.12      -0.0234        0.125         -285    1.23e+003   
+    3     30       2517.6     -0.02364       0.0156        -84.5    1.04e+003   
+    4     36      2511.35     -0.01881          0.5         -153    2.07e+003   
+    5     42      2506.22    -0.009406          0.5         -168          884   
+    6     55      2506.08     -0.00937      0.00391        -17.9    1.16e+003   
+    7     61      2505.77     -0.00554          0.5        -65.4          974   
+    8     74      2505.53    -0.007324      0.00391         -127    1.16e+003   
+    9     82      2505.46    -0.006409        0.125        -21.6          966   
+   10     90      2505.16    -0.007789        0.125         -343          348   
+   11     95      2504.88    -0.008331            1        -73.3         34.4   
+   12    100      2504.85    -0.007827            1        -12.7         16.8   
+   13    105      2504.85    -0.007685            1        -3.27         1.08   
+   14    110      2504.85      -0.0077            1       -0.309        0.134   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current search direction is less than
+twice the default value of the step size tolerance and constraints are 
+satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+No active inequalities.
+
+
+Again, we can test to see if the distribution is sufficient.  We get a statistic of 0.0255 and a pval or 0.0752.
+We do not reject the null at the 5% level.  Finally we can estimate the model with T distributd errors and AP form
+using: [parametersT, likelihoodT, stderrorsT, robustSET, htT, scoresT]=multigarch(errors,1,1,'APGARCH','STUDENTST')
+
+____________________________________________________________
+   Diagnostic Information
+
+Number of variables: 6
+
+Functions 
+ Objective:                            multigarch_likelihood
+ Gradient:                             finite-differencing
+ Hessian:                              finite-differencing (or Quasi-Newton)
+
+Constraints
+ Nonlinear constraints:             do not exist
+ 
+ Number of linear inequality constraints:    7
+ Number of linear equality constraints:      0
+ Number of lower bound constraints:          0
+ Number of upper bound constraints:          0
+
+Algorithm selected
+   medium-scale: SQP, Quasi-Newton, line-search
+
+
+____________________________________________________________
+   End diagnostic information
+
+                                Max     Line search  Directional  First-order 
+ Iter F-count        f(x)   constraint   steplength   derivative   optimality Procedure 
+    0      7      2586.15    -0.006145                                         
+    1     18      2557.05     -0.01829       0.0625         -644    1.27e+004   
+    2     29      2547.89     -0.01715       0.0625        -48.4          884   
+    3     38      2545.64     -0.01793         0.25        -11.9          588   
+    4     47       2537.6     -0.03418         0.25        -10.4          692   
+    5     55      2522.14     -0.03483          0.5        -13.1    2.14e+003   
+    6     67      2518.56     -0.03375       0.0313        -20.3    1.26e+003   
+    7     76      2517.07     -0.02531         0.25        -22.2    1.35e+003   
+    8     84      2517.05     -0.03093          0.5        -25.6          802   
+    9     95      2516.94       -0.029       0.0625        -25.2          331   
+   10    102      2505.66            0            1        -61.6     3.7e+003   
+   11    110      2504.74    -0.001927          0.5        -91.2    2.72e+003   
+   12    121       2502.2     -0.02477       0.0625        -73.4          429   
+   13    131      2502.13     -0.02339        0.125        -3.39          196   
+   14    138      2498.68            0            1        -17.6    2.59e+003   
+   15    145      2497.47     -0.01574            1          -87          138   
+   16    152      2496.71    -0.004617            1        -20.1          130   
+   17    159      2495.04    -0.001477            1        -39.3          184   
+   18    166      2494.83    -0.006088            1        -3.45          262   
+   19    173      2494.57    -0.002966            1        -7.02          472   
+   20    180      2494.44    -0.002233            1        -6.86         23.4   
+   21    187      2494.31    -0.001145            1        -1.84         82.5   
+   22    194      2494.19            0            1        -1.56         30.8   
+   23    201      2494.18            0            1       -0.374         16.4   
+   24    208      2494.18            0            1      -0.0901         2.72   
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the selected value of the function tolerance and constraints 
+are satisfied to within the selected value of the constraint tolerance.
+
+<stopping criteria details>
+
+Active inequalities (to within options.TolCon = 1e-006):
+  lower      upper     ineqlin   ineqnonlin
+                          5           
+Again, we can test to see if the distribution is sufficient.  We get a statistic of 0.0201 and a pval or 0.2585.
+We fail to reject the null that the distribution if correctly specified.
+
+
+
+I hope youf found the demo useful and enjoy the toolbox.  If you  have any corections, suggestions or other
+inquiries, please email me at kevin.sheppard@economics.ox.ac.uk.
+
+
+I've started work on Version 2 which I expect will contain Multivariate Garch models as well as more C-Mex.

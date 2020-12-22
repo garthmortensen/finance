@@ -1,0 +1,31 @@
+,Cost of capital,,,,CAPM,,,,CAPM,,
+,re = r0 + D/E(r0-rb)(1-t),,,,re = RFR + B(rm-RFR),,,,re = RFR + B(rm-RFR),,
+,,,,,,,,,,,
+,China,,,,US,,,,HK,,
+unlevered cost of capital,r0,15%,given,,RFR,8.09%,,,RFR,7.75%,
+cost of debt,rb,8%,given,,rm-RFR,4.73%,,,rm-RFR,13.05%,
+,t1,30%,assumed,,B, 0.52 ,,,B, 0.52 ,using US beta
+,t2,33%,KPMG,,,,,,,,
+,t3,40%,assumed,,re =,10.55%,,,re =,14.54%,
+,d,"752,874",fixed,,,,,,,,
+,e,"609,148",fixed,,Cost of capital,,,,Cost of capital,,
+,,,,,re = r0 + D/E(r0-rb)(1-t),,,,re = r0 + D/E(r0-rb)(1-t),,
+levered cost of capital,re1 =,21%,,,,,,,,,
+,re2 =,21%,,,re,10.55%,given,,re,14.54%,given
+,re3 =,20%,,,rb China,8%,,,rb China,8%,
+,,,,,rb,10.00%,China rb + 2% estimated cross market premium,,rb,9.00%,China rb + 1% estimated cross market premium
+,d+e,"1,362,022",,,t1,30%,assumed,,t1,30%,assumed
+,d/total,55%,,,t2,33%,assumed,,t2,33%,assumed
+,e/total,45%,,,t3,40%,assumed,,t3,40%,assumed
+,,,,,d,"752,874",fixed,,d,"752,874",fixed
+,,re*(e/t)+rb(d/t)(1-t),,,e,"609,148",fixed,,e,"609,148",fixed
+,WACC1,12.51%,,,,,,,,,
+,WACC2,12.26%,,,d+e,"1,362,022",,,d+e,"1,362,022",
+,WACC3,11.68%,,,d/total,55%,,,d/total,55%,
+,,,,,e/total,45%,,,e/total,45%,
+,,,,,,,,,,,
+,,,,,,re*(e/t)+rb(d/t)(1-t),,,,re*(e/t)+rb(d/t)(1-t),
+,,,,,WACC1,8.59%,,,WACC1,9.98%,
+,,,,,WACC2,8.42%,,,WACC2,9.83%,
+,,,,,WACC3,8.03%,,,WACC3,9.49%,
+,,,,,"the US offers the lowest WACC, so it is best.",,,,,,

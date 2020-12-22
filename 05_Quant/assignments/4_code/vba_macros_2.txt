@@ -1,0 +1,386 @@
+Option Explicit
+'Option Base 1
+Private MyVar As Variant
+Const pi As Single = 3.14159
+
+Type Member
+   Name As String
+   Surname As String
+   Gender As String * 1
+   Address As String
+   PostalCode As String * 5
+   City As String
+   Telephone As String * 10
+   Age As Byte
+   Number As Integer
+End Type
+
+
+
+Sub Macro_Example()
+    Dim Msg As String
+    Dim Ans As Integer
+    Msg = "Is your name " & Application.UserName & "?"
+    Ans = MsgBox(Msg, vbYesNo)
+    If Ans = vbNo Then MsgBox "Oh, nevermind."
+    If Ans = vbYes Then MsgBox "I am a clairvoyant!"
+End Sub
+
+Function Function_Example(list As Range) As Double
+    Dim Item As Range
+    Function_Example = 0
+    For Each Item In list
+        If Application.IsNumber(Item) Then
+            Function_Example = Function_Example + Item
+        End If
+    Next Item
+End Function
+
+
+
+
+Sub Calling_Function()
+    Dim Monthly_rate As Single
+    Monthly_rate = 0.004
+    MsgBox "The annual equivalent rate to a monthly rate of " _
+            & 100 * Monthly_rate & "% is " & _
+            100 * Annual_rate(Monthly_rate) & "%."
+    'Application.MacroOptions Macro:="Annual_rate", Category:=1
+End Sub
+
+Function Annual_rate(r As Single) As Single 'Double
+    Annual_rate = (1 + r) ^ 12 - 1
+    Annual_rate = Application.Round(Annual_rate, 4)
+    'MsgBox Annual_rate
+End Function
+
+
+
+
+Sub Selection()
+    Rows("3:5").Select
+    ActiveCell.Value = 13
+    Range("B4").Activate
+    Range("C4").Select
+    Range("C1", "D4").Select
+    Range("C1,D4").Select
+    Range("2:4").Select
+    Range("B4").Activate
+    Range("B6").Activate
+    Columns("C").Select
+    Columns(4).Select
+    Range("E:E").Select
+    Columns(4).Activate
+    Cells(3, 1).ClearContents
+    Cells(5).Value = 10
+    Cells(5).Interior.ColorIndex = 3
+    Range("E1").Clear
+End Sub
+
+
+
+
+Sub Useful_properties_selection()
+    Range("C4").CurrentRegion.Select
+    Cells(6).Activate
+    Range("C4").CurrentRegion.Cells(6).Select
+    Range("C13").CurrentRegion.Select
+    ActiveWorkbook.ActiveSheet.UsedRange.Select
+    Range("C4").End(xlToLeft).Select
+    Range("C4").End(xlToRight).Select
+    Range("C4").End(xlUp).Select
+    Range("C4").End(xlDown).Select
+    Range("A1", "B5").Select
+    Range("B2", Range("B2").End(xlDown)).Select
+    Range("B2").End(xlDown).Offset(1, 0).Select
+    Range("[Session_3_Macros.xlsm]Session_3!Index").Select
+    Range("[Session_3_Macros.xlsm]Session_3!Index").Font.Bold = True
+    Range("[Session_3_Macros.xlsm]Session_3!Index").Font.Bold = False
+    ActiveSheet.StandardWidth = 9
+    Application.Goto Reference:="[Session_3_Macros.xlsm]Session_3!Months"
+    Application.Goto ("[Session_3_Macros.xlsm]Session_3!Index")
+End Sub
+
+
+
+
+Sub Range_Size()
+    Debug.Print "The table has " & Range("Table_of_Data").Count & " cells."
+    Debug.Print "The table has " & Range("Table_of_Data").Rows.Count & " rows."
+    Debug.Print "The table has " & Range("Table_of_Data").Columns.Count & " columns."
+End Sub
+
+
+
+
+Sub Macro_Error()
+    MyVariable = Workbooks.Count
+    While Myvarable < 10
+        Workbooks.Add
+        MyVariable = MyVariable + 1
+    Wend
+End Sub
+
+
+
+
+Sub Char_Chain()
+    Dim Age As Integer
+    Dim Permission As String
+    Age = InputBox("Enter your age:")
+    If Age < 18 Then Permission = "cannot" Else Permission = "can"
+    MsgBox "You " & Permission & " drink alcohols !"
+End Sub
+
+
+
+
+Sub Boolean_Example()
+    Dim B As Boolean, I As Integer
+    B = True: I = B
+    Debug.Print I
+    I = 10: B = I
+    Debug.Print B '+ 1
+End Sub
+
+
+
+
+Sub Variant_Example()
+    Dim a As Variant
+    a = 59 + 10
+    MsgBox a
+    a = "Got the idea of a Variant type?"
+    MsgBox a
+End Sub
+
+
+
+
+Sub Variable_Object()
+    Dim Police As Object 'Alternative: Dim Police As Font
+    Set Police = ActiveSheet.Range("A1:A10").Font
+    Police.Bold = True
+    'Set Police = Nothing
+End Sub
+
+Sub Show_Sheets()
+    Dim MySheet As Worksheet
+    For Each MySheet In Worksheets
+        MsgBox MySheet.Name
+    Next MySheet
+End Sub
+
+
+
+
+Function Get_Value_Closed_Object() As Single
+    Dim MyObject As Workbook
+    Set MyObject = GetObject("C:\Users\Carlos Heitor\Financial_Data.xls") 'The path may be corrected.
+    Get_Value_Closed_Object = MyObject.Sheets("Stocks").Range("B2").Value
+    MyObject.Save
+    MyObject.Close
+End Function
+
+
+
+
+Sub Creating_Excel_Instance()
+    Dim MyExcel As Excel.Application
+    Dim New_Workbook As Excel.Workbook
+    Dim FileName, Path As String
+    Path = "C:\Users\Carlos Heitor\Desktop\"
+    FileName = "Returns.xlsx"
+    Set MyExcel = CreateObject("Excel.Application")
+    MyExcel.Application.Visible = True
+    Set New_Workbook = MyExcel.Workbooks.Add
+    New_Workbook.Sheets(3).Delete
+    New_Workbook.Sheets(1).Name = "Stocks"
+    New_Workbook.Sheets(2).Name = "Bonds"
+    New_Workbook.SaveAs Path & FileName
+    New_Workbook.Close
+    MyExcel.Quit
+End Sub
+
+
+
+
+Sub Array_Variable()
+    Dim a(3) As Integer, B As Integer
+    For B = 1 To 3
+        a(B) = B ^ 2
+        MsgBox a(B)
+    Next B
+    MsgBox "The variable a is an array ?" & Chr(13) & IsArray(a)
+    MsgBox "The variable b is an array ?" & Chr(13) & IsArray(B)
+End Sub
+
+
+
+
+Sub MultiDim_Array_Variable()
+    Dim Matrix(1 To 8, 1 To 4) As Single
+    Dim row As Byte, column As Byte
+    Dim index As Integer
+    For row = 1 To 8
+        For column = 1 To 4
+            Matrix(row, column) = Range("C3:F10").Cells(row, column).Value
+            Debug.Print "The element of row " & row & " and column " & column _
+                    & " is " & Matrix(row, column) & "."
+        Next column
+    Next row
+    index = LBound(Matrix, 1)
+    MsgBox "The smallest index of the first dimension is " & index & "."
+    index = UBound(Matrix, 1)
+    MsgBox "The greatest index of the first dimension is " & index & "."
+    index = LBound(Matrix, 2)
+    MsgBox "The smallest index of the second dimension is " & index & "."
+    index = UBound(Matrix, 2)
+    MsgBox "The greatest index of the second dimension is " & index & "."
+End Sub
+
+
+
+
+Sub Dynamic_Array()
+    Dim DynMatrix() As Single
+    Dim LastRow As Byte
+    LastRow = Range("C3").End(xlDown).row
+    Dim n As Byte
+    n = LastRow - 2
+    ReDim DynMatrix(1 To n, 2 To 4)
+    DynMatrix(1, 2) = 10
+    MsgBox DynMatrix(1, 2)
+    ReDim Preserve DynMatrix(1 To n, 1 To 4)
+    MsgBox DynMatrix(1, 2)
+End Sub
+
+
+
+
+
+Sub Using_New_Type()
+  Dim NewMember As Member
+    With NewMember
+      .Name = "Mick"
+      .Surname = "Jagger"
+      .Gender = "M"
+      .Address = "4 Avenue Jean Médecin"
+      .PostalCode = "06000"
+      .City = "Nice"
+      .Telephone = "0489010101"
+      .Age = 35
+      .Number = 666
+    End With
+  Dim Pronoum As String
+  If NewMember.Gender = "M" Then Pronoum = "He" Else Pronoum = "She"
+  MsgBox "The new member is called " & NewMember.Name & " " & _
+          NewMember.Surname & " whose number in the association is " _
+          & NewMember.Number & ". " & Pronoum & " lives at " & _
+          NewMember.Address & ", " & NewMember.City & ", " _
+          & NewMember.PostalCode & "."
+End Sub
+
+
+
+
+
+Sub Datatypes()
+    Dim S As String
+    Dim I As Integer
+    Dim C As Currency
+    Dim O As Object
+    Dim V As Variant
+    MsgBox "Is S a date?" & Chr(13) & IsDate(S)
+    MsgBox "Is S a number?" & Chr(13) & IsNumeric(S)
+    MsgBox "Is I a number?" & Chr(13) & IsNumeric(I)
+    MsgBox "Is O an object?" & Chr(13) & IsObject(O)
+    MsgBox "Is V empty?" & Chr(13) & IsEmpty(V)
+    MsgBox "Is S empty?" & Chr(13) & IsEmpty(S)
+    MsgBox "S is a " & TypeName(S) & " variable, C is a " _
+            & TypeName(C) & " variable, O is a " & TypeName(O) _
+            & " variable and, finally, V is an " & TypeName(V) _
+            & " variable."
+    V = Now()
+    MsgBox "S is a " & TypeName(S) & " variable, C is a " _
+            & TypeName(C) & " variable, O is a " & TypeName(O) _
+            & " variable and, finally, V is a " & TypeName(V) _
+            & " variable."
+End Sub
+
+
+
+
+Sub Arguments_Example_Caller()
+    Call Arguments_Example1(10)
+End Sub
+
+Sub Arguments_Example1(p As Integer)
+    Dim S As Integer
+    S = Arguments_Example2(0, p, , 2) + Arguments_Example2(w:=2, x:=1, Y:=8)
+    MsgBox S
+End Sub
+
+Function Arguments_Example2(x As Integer, Y As Integer, _
+         Optional Z As Integer = 0, Optional w As Integer = 1) As Integer
+     Arguments_Example2 = (x + Y) * (Z + w)
+End Function
+
+
+
+
+Sub ByVal_ByRef_Example1_Caller()
+    Dim Y As Integer
+    Y = 50
+    Call ByVal_ByRef_Example1(Y)
+    MsgBox Y
+End Sub
+
+Sub ByVal_ByRef_Example1(ByVal x As Integer)
+    x = x + 10
+End Sub
+
+
+
+
+
+Sub ByVal_ByRef_Example2_Caller()
+    MyVar = 2
+    Call ByVal_ByRef_Example2(MyVar)
+    Call ByVal_ByRef_Example2(Arg1:=MyVar)
+    'Call ByVal_ByRef_Example2 MyVar       NOT accepted
+    'Call ByVal_ByRef_Example2 Arg:=MyVar  NOT accepted
+    ByVal_ByRef_Example2 (MyVar)
+    'ByVal_ByRef_Example2(Arg1:=MyVar)     NOT accepted
+    ByVal_ByRef_Example2 MyVar
+    ByVal_ByRef_Example2 Arg1:=MyVar
+End Sub
+
+Sub ByVal_ByRef_Example2(ByVal Arg1)
+    Dim x As Integer
+    x = x + Arg1
+    MsgBox "x=" & x
+    Arg1 = 115
+End Sub
+
+
+
+
+Sub Static_Var_Example_Caller()
+    MyVar = 2
+    Call Static_Var_Example(MyVar)
+    Call Static_Var_Example(MyVar)
+    Static_Var_Example Arg1:=MyVar
+End Sub
+
+Sub Static_Var_Example(Arg1)
+    Static x As Integer
+    Dim Y As Integer
+    x = x + Arg1
+    Y = Y + Arg1
+    MsgBox "x=" & x & " and y=" & Y
+End Sub
+
+
+
+

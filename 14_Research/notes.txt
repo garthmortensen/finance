@@ -1,0 +1,35 @@
+build a portfolio for small investors that is impervious to a financial crash that results in significant job loss. an investment there to sell if unemployment results from a crash. Lock to the US.
+
+what market conditions lead to the highest levels of unemployment in the US? During these periods, do company balance sheets shift in a certain way such as current assets leaping? Can you build an index that negatively relates to such movements? 
+
+step1) what companies/industries hire the most in the US?
+
+step2) how do their financial positions reflect hirings/firings? use factor analysis to ID.
+
+step3) what stocks move in negative relation to these changes? use factor analysis to ID.
+
+step4) build an index.
+
+
+
+
+
+Journal of Finance
+Journal of Portfolio Management
+Financial Analyst Journal
+
+
+Important for finance to move beyond just cataloging facts and move toward making quantitative predictions that can inform policymakers as well as other academics.
+
+But also must be careful of hot topics, since you have to invent something really unique to add a unique twist.
+
+RMB/USD is a perennial issue. it might be good to target this. 
+"After Obama told Hu that the U.S. public and businesses were losing patience with China’s policies, the Chinese Foreign Ministry released a statement saying the U.S. trade deficit and unemployment are not caused by the yuan exchange rate and a large appreciation in the currency won’t solve U.S. problems."
+
+
+
+Alternatively - first consider the RIMS II model, (leontiff industry I/O). You can see upstream and downstream industrial linkages in it. For instance, if a company spends 100 dollars in production, the matrix shows from which other industries it's purchasing from.
+
+I'd like to see if cross-sector stock market performances suggest the same relations.
+
+Consider this - the papermaking sector spends half of its money on purchasing trees from the forestry sector. If the papermaking sector performs very well and sees its stock prices double, can we see the upstream forestry sector enjoying the same affects? What about the sectors that supply the remaining half? We can measure this using a matrix showing correlations between different sector performances.

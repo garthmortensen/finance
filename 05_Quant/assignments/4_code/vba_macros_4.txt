@@ -1,0 +1,137 @@
+Option Base 1 'this declares option base 1
+Sub Getting_Started()
+' firstmacro Macro. it colors A1 yellow, resizes and puts my names in.
+    Range("A1").Select
+    ActiveCell.FormulaR1C1 = "application.GarthMortensen"
+    Columns("A:A").EntireColumn.AutoFit
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+    End With
+   
+ 
+
+End Sub
+
+Sub Sharpe_Ratio()
+' this is the Sharpe Ratio. its very difficult.
+   
+    Dim stockreturn As Single, stockvolitility As Single, riskfreerate As Single, SharpeRatio As Single
+      
+        stockreturn = InputBox("What is the expected stock return in %?")
+        stockvolitility = InputBox("What is the stock volitility in %")
+            If stockvolitility < 0 Then GoTo Error
+        riskfreerate = InputBox("What is the risk free rate in %")
+            If riskfreerate < 0 Then GoTo Error Else GoTo SharpeRatio
+           
+Error:            MsgBox ("Make sure this is a positive number")
+SharpeRatio:      SharpeRatio = ((stockreturn - riskfreerate) / stockvolitility)
+    'this is where we place it in A2
+    Range("A2").Select
+    ActiveCell = "The Sharp Ratio, given your inputs, is " & _
+            Round(SharpeRatio, 2) & "."
+'cant figure out how to get non numeric values working.
+'must double check the sharpe ratio
+End Sub
+ 
+Function standard_deviation(x As Range, choice As Boolean) As Single
+'this is the non-functional function to calculate standard deviation.
+'you must use the function button, not just type the function into the cell.
+    
+    MsgBox ("Are you working with a 'population' or 'sample'? Choice = 1 for population, 0 for sample")
+    If choice = True Then
+    standard_deviation = Application.WorksheetFunction.StDev_P(x)
+    Else
+    standard_deviation = Application.WorksheetFunction.StDev_S(x)
+    End If
+    
+End Function
+ 
+Function identity_matrix(order As Byte)
+'this is supposed to create an identity matrix, though it does not.
+
+Dim order As Byte
+Dim identitymatrix(1 To order, 1 To order) As Single
+Worksheets("Assignment").Activate
+Range ("A1:Z255")
+'there is an error with range i haven't resolved :(
+order = InputBox("what dimensions do you want this square Identity matrix to be?") - 1
+'Fill array with values. -1 bc the array starts at 0.
+
+ReDim identitymatrix(order) As Single
+'this would be the next step in the right direction.
+
+End Function
+ 
+Sub Auto_Open()
+    Dim first As Byte, second As String, third As String
+    'this is the password function. it is only a text dialogue though. it does not provide any locking features.
+    
+    first = InputBox("If you don't want a password, enter 0. If you do want a password, type in any other number between 1 and 255.")
+    If first = 0 Then
+    
+'No password
+    MsgBox "You are paranoid about your data."
+    Else
+    GoTo password
+    
+'Password
+password:
+    second = InputBox("You might be paranoid. Set your password")
+    third = InputBox("Re-enter the same password")
+    If second <> third Then
+    MsgBox "Oops, try again.", vbCritical
+    End If
+End
+End If
+
+'======the below is just for archiving purposes========
+'    Else: GoTo password
+'cancel:
+'    If n = m Then
+'     Application.DisplayAlerts = False
+'     ThisWorkbook.SaveAs ThisWorkbook.FullName, , ""
+'    Application.DisplayAlerts = True
+'End If
+'    Range("z1").Select
+'    ActiveCell.FormulaR1C1 = "n"
+
+'End If
+
+End Sub
+
+Sub valuation()
+Dim yr As Integer, p As Integer, yielddata() As Single, projectdata() As Single
+
+MsgBox "The last year in the yield table must be equal to or greater than the last year in the project table. The cash flows must be non-negatives, the interest rates must be positive, first year starts at year 1"
+
+yr() = InputBox("How many years will the project last for") 'i use yr() because this denotes an array
+'ReDim n   - i dont know how to use this function :(
+'yielddata(n) = InputBox("For each year, what is the yield in %? Enter the yield for year " & p)
+'projectdata(n) = InputBox("What was your initial investment? Make sure its negative.")
+
+MsgBox ("Your final NPV is " & value)
+
+End Sub
+
+Function project_valuation(yield_data, project_data) As Single
+Dim yr As Integer, p As Integer
+Dim yielddata() As Single, projectdata() As Single
+'this should turn the previous subroutine into a function and paste the output in cell F1
+
+MsgBox "The last year in the yield table must be equal to or greater than the last year in the project table. The cash flows must be non-negatives, the interest rates must be positive, first year starts at year 1"
+
+yr() = InputBox("How many years will the project last for")
+'ReDim n   - i dont know how to use this function :(
+'yielddata(n) = InputBox("For each year, what is the yield in %? Enter the yield for year " & p)
+'projectdata(n) = InputBox("What was your initial investment? Make sure its negative.")
+
+MsgBox ("Your final NPV is " & value)
+
+End Sub
+    Range("F1").Select
+    ActiveCell = "The value of it is, given your inputs, is " & value
+
+End
+End Sub

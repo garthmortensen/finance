@@ -1,0 +1,610 @@
+Option Explicit
+Option Base 1
+
+
+
+Sub Arguments_Example_Caller()
+    Call Arguments_Example1(10)
+End Sub
+
+Sub Arguments_Example1(p As Integer)
+    Dim S As Integer
+    S = Arguments_Example2(0, p, , 2) + Arguments_Example2(w:=2, x:=1, Y:=8)
+    MsgBox S
+End Sub
+
+Function Arguments_Example2(x As Integer, Y As Integer, _
+         Optional Z As Integer = 0, Optional w As Integer = 1) As Integer
+     Arguments_Example2 = (x + Y) * (Z + w)
+End Function
+
+
+
+
+Sub ByVal_ByRef_Example1_Caller()
+    Dim Y As Integer
+    Y = 50
+    Call ByVal_ByRef_Example1(Y)
+    MsgBox Y
+End Sub
+
+Sub ByVal_ByRef_Example1(ByVal x As Integer)
+    x = x + 10
+End Sub
+
+
+
+
+
+Sub ByVal_ByRef_Example2_Caller()
+    MyVar = 2
+    Call ByVal_ByRef_Example2(MyVar)
+    Call ByVal_ByRef_Example2(Arg1:=MyVar)
+    'Call ByVal_ByRef_Example2 MyVar       NOT accepted
+    'Call ByVal_ByRef_Example2 Arg:=MyVar  NOT accepted
+    ByVal_ByRef_Example2 (MyVar)
+    'ByVal_ByRef_Example2(Arg1:=MyVar)     NOT accepted
+    ByVal_ByRef_Example2 MyVar
+    ByVal_ByRef_Example2 Arg1:=MyVar
+End Sub
+
+Sub ByVal_ByRef_Example2(ByVal Arg1)
+    Dim x As Integer
+    x = x + Arg1
+    MsgBox "x=" & x
+    Arg1 = 115
+End Sub
+
+
+
+
+Sub Static_Var_Example_Caller()
+    MyVar = 2
+    Call Static_Var_Example(MyVar)
+    Call Static_Var_Example(MyVar)
+    Static_Var_Example Arg1:=MyVar
+End Sub
+
+Sub Static_Var_Example(Arg1)
+    Static x As Integer
+    Dim Y As Integer
+    x = x + Arg1
+    Y = Y + Arg1
+    MsgBox "x=" & x & " and y=" & Y
+End Sub
+
+
+
+
+Sub LogicalOperators_Example()
+    Dim x As Integer, Y As Integer
+    Dim Z As Boolean
+    x = InputBox("Enter an integer:")
+    Y = InputBox("Enter an integer:")
+    Z = Y > 10 Xor Not x > 10
+    MsgBox Z
+End Sub
+
+
+
+
+Sub While_Example()
+    Dim i As Integer, n As Integer
+    Dim TotalReturn As Single
+    n = Range("C4", Range("C4").End(xlDown)).Count
+    i = 1
+    While i <> n
+        TotalReturn = (1 + TotalReturn) * (1 + Range("C" & i + 3).Value) - 1
+        i = i + 1
+    Wend
+    MsgBox "The total return of " & Range("C3").Value & _
+            " for the time period analyzed is " & _
+            Application.Round(100 * TotalReturn, 2) & "%."
+End Sub
+
+
+
+
+Sub Like_Example()
+Dim a As String, b As String
+a = Application.Name
+b = "Microsoft Excel"
+MsgBox a Like b
+MsgBox a = b
+End Sub
+
+
+
+
+Sub Do_Example()
+    Dim i As Integer, n As Integer
+    Dim TotalReturn As Single
+    n = Range("C4", Range("C4").End(xlDown)).Count
+    i = 0
+    Do While i <> n
+        i = i + 1
+        TotalReturn = (1 + TotalReturn) * (1 + Range("C" & i + 3).Value) - 1
+    Loop
+    MsgBox "The total return of " & Range("C3").Value & _
+            " for the time period analyzed is " & _
+            Application.Round(100 * TotalReturn, 2) & "%."
+End Sub
+
+
+
+
+Sub InfLoop_Example1()
+    Dim i As Double
+    i = 1
+    Do While i > 0
+        i = i + 1
+        Debug.Print i
+        'If i = 100 Then Stop
+    Loop
+End Sub
+
+Sub InfLoop_Example2()
+    Dim incr As Double, f As Double
+    incr = 0.1: f = 1
+    Do Until f = 1.5
+        f = f + 0.1
+        Debug.Print "f is " & f
+        'If f > 50 Then Stop
+    Loop
+End Sub
+
+
+
+
+Sub ForNext_Example()
+    Dim i As Integer, n As Integer
+    Dim TotalReturn As Single
+    n = Range("C4", Range("C4").End(xlDown)).Count
+    For i = 1 To n Step 1
+        TotalReturn = (1 + TotalReturn) * (1 + Range("C" & i + 3).Value) - 1
+    Next i
+    MsgBox "The total return of " & Range("C3").Value & _
+            " for the time period analyzed is " & _
+            Application.Round(100 * TotalReturn, 2) & "%."
+End Sub
+
+
+
+
+Sub Looping_Exercise()
+    Dim i As Integer, n As Integer
+    Dim k As Integer
+    n = Range("G3").End(xlDown).row
+    k = 0
+    For i = 3 To n Step 1
+        If Range("G" & i).Value = "N/A" Then
+            Range("G" & i).EntireRow.Delete
+            k = k + 1
+        End If
+    Next i
+    MsgBox k & " assets were deleted."
+End Sub
+
+
+
+
+Sub ForEach_Example()
+    Dim i As Integer, n As Integer
+    Dim TotalReturn As Single
+    Dim MyCell As Range
+    n = Range("C4", Range("C4").End(xlDown)).Count
+    For Each MyCell In Range("C4", Range("C4").End(xlToRight))
+        TotalReturn = 0
+        For i = 1 To n Step 1
+            TotalReturn = (1 + TotalReturn) * (1 + Cells(i + 3, MyCell.column).Value) - 1
+        Next i
+        MsgBox "The total return of " & Cells(3, MyCell.column).Value & _
+                " for the time period analyzed is " & _
+                Application.Round(100 * TotalReturn, 2) & "%."
+    Next MyCell
+End Sub
+
+
+
+
+Sub If_Example()
+    Dim loan As Currency
+    Dim rate As Single
+    Dim n_max As Integer
+    loan = InputBox("What's the amount of the loan?")
+    If loan < 100000 Then rate = 0.06: n_max = 60 Else rate = 0.05: n_max = 600
+    MsgBox "The offered interest rate is " & 100 * rate & _
+            "% and the maximum repayment period is " & n_max & " months."
+End Sub
+
+
+
+
+Sub Iif_Example()
+    Dim answer As Byte
+    answer = MsgBox("Do you enjoy AC/DC?", vbQuestion + vbYesNo, _
+                    "Obvious Question")
+    MsgBox IIf(answer = vbYes, "So am I!", "Whaaaat?!!!")
+End Sub
+
+
+
+
+Sub Auto_Open()
+    Dim n As Byte
+    Dim m As Byte
+    Dim i As Byte
+    n = InputBox("How many sheets do you want?" & Chr(13) & _
+                "Enter 0 to keep the current number of worksheets.")
+    m = Worksheets.Count
+    If n = 0 Or n = m Then
+        Exit Sub
+    ElseIf n > m Then
+        For i = 1 To n - m
+            Worksheets.Add
+        Next i
+    Else
+        For i = 1 To m - n
+            MsgBox "ATTENTION: You will delete the worksheet " _
+                    & Worksheets(1).Name & " !!!"
+            Worksheets(1).Delete
+        Next i
+    End If
+End Sub
+
+
+
+
+Sub SelectCase_Example1()
+    Dim loan As Currency
+    Dim rate As Single
+    Dim n_max As Integer
+    loan = InputBox("What's the amount of the loan?")
+    Select Case loan
+        Case Is < 100000
+            rate = 0.06
+            n_max = 5
+        Case Is < 500000
+            rate = 0.05
+            n_max = 10
+        Case Is < 1000000
+            rate = 0.045
+            n_max = 20
+        Case Is > 1000000
+            rate = 0.04
+            n_max = 30
+    End Select
+    MsgBox "The offered interest rate is " & 100 * rate & _
+            "% and the maximum repayment period is " & n_max & " years."
+End Sub
+
+
+
+
+Sub SelectCase_Example2()
+    Dim grade As Byte
+    Dim text As String
+    grade = InputBox("What's your grade over 20?")
+    Select Case grade
+        Case 20
+            text = "You must come out of Mars! Congrats!!!"
+        Case 16 To 20
+            text = "Excelent grade!"
+        Case 12 To 16
+            text = "That's a good grade."
+        Case 10 To 12
+            text = "You just passed."
+        Case Is < 10
+            text = "You can do better than this!"
+        Case Else
+            text = "How come? The maximum grade is 20!"
+    End Select
+    MsgBox text
+End Sub
+
+
+
+
+Sub Switch_Example()
+    Dim grade As Byte
+    Dim text As String
+    grade = InputBox("What's your grade over 20?" & Chr(13) _
+                    & "You must enter an integer from 0 to 20")
+    text = Switch(grade = 20, "You must come out of Mars! Congrats!!!", _
+                grade >= 16, "Excelent grade!", grade >= 12, _
+                "That's a good grade.", grade >= 10, "You just passed.", _
+                grade < 10, "You can do better than this!")
+    MsgBox text
+End Sub
+
+
+
+
+Sub GoTo_Example()
+    Dim rate As Single
+    rate = InputBox("Enter annual interest rate in %.")
+    If rate > 15 Then GoTo RateTooHigh
+    rate = 100 * ((1 + rate / 100) ^ (1 / 12) - 1)
+    MsgBox "This rate corresponds to a monthly rate of " _
+            & Round(rate, 2) & "%."
+    Exit Sub
+RateTooHigh:
+    MsgBox ("Interest rate cannot be greater than 15%.")
+End Sub
+
+
+
+
+Sub MsgBox_Example1()
+    Dim a As Integer
+    a = MsgBox("This is the prompt_text.", vbOKOnly, "Dialog box title.")
+    MsgBox a, vbOKOnly, "Value:"
+End Sub
+
+
+
+
+Sub MsgBox_Example2()
+    Dim m_rate As Single, y_rate As Single
+    Dim answer As Byte
+    m_rate = InputBox("Input a monthly effective interest rate in %.")
+    y_rate = 100 * ((1 + m_rate / 100) ^ 12 - 1)
+    MsgBox "This rate corresponds to a yearly rate of " _
+            & Round(y_rate, 2) & "%."
+    answer = MsgBox("Do you want the equivalent interest rate continuously compounded?" _
+            , vbQuestion + vbYesNo, "Effective Continuous Rate?")
+    If answer = vbYes Then
+        y_rate = 100 * Log(1 + y_rate / 100)
+        MsgBox "The continuosly compounded equivalent interest rate is " & _
+                Round(y_rate, 2) & "% per year."
+    End If
+End Sub
+
+
+
+
+Sub InputBox_Example1()
+    Dim rate As Single
+    rate = InputBox("Enter annual interest rate in %.", "Annual Interest Rate", "8")
+    'Instructions
+End Sub
+
+
+
+
+Sub InputBox_Example2()
+    Dim answer As Boolean
+    answer = Application.InputBox("Are you willing for more VBA?" _
+                & Chr(13) & "Enter 1 for Yes or 0 for No.", Type:=4)
+    If answer Then
+        MsgBox "Good!!!"
+    Else
+        MsgBox "That's bad :("
+    End If
+End Sub
+
+
+
+
+Sub DialogBox_Example()
+    Application.Dialogs(xlDialogBorder).Show
+    Application.Dialogs(xlDialogOpen).Show
+    Dim MyDialogBox As Dialog
+    Set MyDialogBox = Application.Dialogs(xlDialogSaveAs)
+    MyDialogBox.Show
+End Sub
+
+
+
+
+Sub GetOpenFilename_Example()
+    Dim OpenFiles As Variant
+    ChDir ("C:\Users\Carlos Heitor\CH Docs\PhD_Edhec\Excel-VBA")
+    OpenFiles = Application.GetOpenFilename(Title:="Opening Files", MultiSelect:=True)
+    If UBound(OpenFiles) > 1 Then
+        Dim answer As Byte
+        Dim List As String
+        Dim counter As Byte
+        For counter = 1 To UBound(OpenFiles)
+           List = List & Chr(13) & OpenFiles(counter)
+        Next counter
+        answer = MsgBox("You have selected more than one file. Here the list:" & _
+                List & Chr(13) & "Open them all?", vbYesNo + vbQuestion, _
+                "Open the files?")
+        If answer = vbYes Then
+           For counter = 1 To UBound(OpenFiles)
+              Workbooks.Open FileName:=OpenFiles(counter)
+           Next counter
+        End If
+    Else
+        Workbooks.Open FileName:=OpenFiles(1)
+    End If
+End Sub
+
+
+
+
+Sub Inserting_Formulas_Example()
+    Range("A1").Formula = "=SUM(C4:C15)"
+End Sub
+
+
+
+
+Sub StringManipulation_Example1()
+    Dim string1 As String, string2 As String, num As Double
+    num = day(Now)
+    string1 = ActiveWorkbook.Name: string2 = string1 & num
+    Debug.Print string2
+    string1 = Str(num): string2 = num
+    Debug.Print string1 Like string2
+    Debug.Print string1 & Chr(13) & string2
+    Debug.Print Len(string1) & Chr(13) & Len(string2)
+End Sub
+
+Sub StringManipulation_Example2()
+    Dim MyArray(5) As String, i As Byte
+    For i = 1 To UBound(MyArray)
+        MyArray(i) = 2 ^ i
+    Next i
+    Debug.Print Join(MyArray, ", ")
+End Sub
+
+Sub StringManipulation_Example3()
+    Dim Message As String
+    Dim day As Byte
+    Message = "The days of the week are:"
+    For day = 1 To 7
+    Message = Message & Chr(13) & Chr(9) & Chr(149) & _
+                Space(5) & WeekdayName(day, False, vbMonday)
+    Next day
+    MsgBox Message & Chr(13) & String(60, Chr(34))
+End Sub
+
+Sub StringManipulation_Example4()
+    Dim Name As String, n As Byte
+    Dim FirstName As String, Surname As String
+    Name = Trim(InputBox("Enter your name please:"))
+    n = InStr(Name, " ")
+    FirstName = Left(Name, n - 1)
+    Surname = Right(Name, InStr(StrReverse(Name), " ") - 1)
+    Debug.Print FirstName
+    Debug.Print Surname
+End Sub
+
+Sub StringManipulation_Example5()
+    Dim NameOfFile As String
+    NameOfFile = InputBox("Enter the name of the file to save as:")
+    NameOfFile = NameOfFile & Date & ".xlsm"
+    NameOfFile = Replace(NameOfFile, "/", "")
+    ActiveWorkbook.SaveAs (NameOfFile)
+End Sub
+
+Sub StringManipulation_Example6()
+    Dim AnySentence As String
+    AnySentence = InputBox("Enter any sentence below:")
+    Debug.Print StrConv(AnySentence, vbProperCase)
+    Debug.Print StrConv(AnySentence, vbLowerCase)
+    Debug.Print StrConv(AnySentence, vbUpperCase)
+    Debug.Print StrComp("abc", "ABC", vbTextCompare)
+    Debug.Print StrComp("abc", "ABC", vbBinaryCompare)
+    Debug.Print StrComp("ABC", "XYZ", vbTextCompare)
+    Debug.Print StrComp("xyz", "abc", vbTextCompare)
+End Sub
+
+
+
+
+Sub Debugging_Example()
+    Dim MyArray(4) As Integer
+    Dim i As Byte
+    For i = 1 To 4
+        MyArray(i) = i ^ 2
+    Next i
+    MsgBox MyArray(i)
+End Sub
+
+
+
+
+Sub Debugging_Example_Caller()
+    Dim a As Integer, b As Integer
+    a = 10: b = 20
+    Call Called_1(a, b)
+End Sub
+
+Sub Called_1(ByRef p As Integer, ByVal r As Integer)
+    Dim S As Integer
+    S = p + r
+    p = Called_2(S, p, 0)
+    r = Called_2(S, r, 0)
+End Sub
+
+Function Called_2(x As Integer, Y As Integer, Z As Integer) As Integer
+     Called_2 = (x + Y + Z)
+End Function
+
+
+
+
+Sub ErrorManagement_Example1()
+    Dim day As Byte
+    day = InputBox("Enter the monthly day this bill is due:")
+    If day < 1 Or day > 31 Then
+        day = InputBox("Please, you must input a valid day number, from 1 to 31:")
+        If day < 1 Or day > 31 Then
+            MsgBox "Invalid day number again. The procedure will be terminated.", vbCritical
+            End
+        End If
+    End If
+    'Procedure statements
+End Sub
+
+
+
+
+Sub ErrorManagement_Example2()
+    Dim day As Byte
+    On Error Resume Next
+    day = InputBox("Enter the monthly day this bill is due:")
+    If day < 1 Or day > 31 Then
+        day = InputBox("Please, you must input a valid day number, from 1 to 31:")
+        If day < 1 Or day > 31 Then
+            MsgBox "Invalid day number again. The procedure will be terminated.", vbCritical
+            End
+        End If
+    End If
+    'Procedure statements
+End Sub
+
+
+
+
+Sub ErrorManagement_Example3()
+    Dim n As Byte
+    On Error GoTo Error_management
+    n = InputBox("Indicate the number of yearly payments, which must be at most 40:" _
+                & Chr(13) & "(Enter 0 if you will pay on cash, with no financing plan)" _
+                , "Home Financing")
+    If n > 40 Then
+        Err.Number = 6
+        GoTo Error_management
+    End If
+    'Procedure statements
+    
+Error_management:
+    If Err.Number = 13 Then MsgBox "You have entered an invalid input or pushed Cancel." _
+                                    & Chr(13) & "The procedure will be terminated.", vbCritical
+    If Err.Number = 6 Then MsgBox "You have entered an invalid number of payments:" & Chr(13) _
+                                    & "it must be an integer between 0 and 40." _
+                                    & Chr(13) & "The procedure will be terminated.", vbCritical
+End Sub
+
+
+
+
+Function Harmonic_Average(x As Single, Y As Single) As Single
+    Debug.Assert (x <> 0 And Y <> 0 And x <> -Y)
+    Harmonic_Average = 1 / (1 / x + 1 / Y)
+End Function
+
+Sub Harmonic_Test()
+Debug.Print Harmonic_Average(1, 2)
+End Sub
+
+
+
+
+Sub Assert_Example()
+    Dim boolean_test As Boolean
+    Dim i As Integer
+    boolean_test = True
+    For i = 0 To 10
+       If i > 5 Then
+          boolean_test = False
+       End If
+       Debug.Assert boolean_test
+    Next i
+End Sub
+
+

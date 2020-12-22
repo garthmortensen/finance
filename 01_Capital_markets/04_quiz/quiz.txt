@@ -1,0 +1,15 @@
+Quick answers on 20 questions in 30 minutes – 
+
+1.	What is the difference between a forward/forward cash and an FRA?
+
+2.	What are the data needed to calculate a forward/forward cash interest rate?
+
+3.	In a currency pair, how could you define the Base currency and the Variable currency? (You can take an example)
+
+4.	What is the definition of a Cross Rate (Foreign Exchange Rate)?
+
+5.	What is a Euribor or a Libor rate?
+
+6.	What is a yield curve?
+
+7.	What do you need to calculate accurately a forward foreign exchange rate (you can give a formula)?

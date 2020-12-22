@@ -1,0 +1,348 @@
+LONG-TERM CAPITAL MANAGEMENT
+Money and Capital Markets
+
+group work
+
+Table of Content
+1 – Hedge Funds & Mutual Funds
+2 – LTCM’s Trading Strategies
+3 – Movements & Effects
+4 – Risk Management
+5 – Beneficiaries and Victims
+6 – Could it happen again?
+Sources
+
+1 – Hedge & Mutual Funds (1/3)
+Hedge Fund
+Mutual Fund
+At first glance, they might look similar
+
+1 – Hedge & Mutual Funds (2/3)
+Mutual Fund
+Hedge Fund
+Accessibility
+For everyone
+For wealthy people
+Regulation
+Highly regulated to
+protect investors
+Very little regulation
+Size
+Huge – 44% of
+Americans have
+investments in them
+Mutual Funds are less risk in
+nature than Hedge Funds
+▪
+They are more regulated
+▪
+They have director
+independence
+▪
+They offer greater transparency
+
+1 – Hedge & Mutual Funds (3/3)
+Mutual Funds
+Hedge Funds
+Advantages
+✓ Liquidity
+✓ Custom strategies
+✓ Denomination Intermediation
+✓ Denomination Intermediation
+✓ Diversification
+✓ Diversification
+✓ Cost advantages
+✓ Managerial expertise
+✓ Managerial expertise
+✓ Leverage allows for more
+profit opportunities
+✓ Transparency
+✓ Good return-to-risk ratio
+Disadvantages
+✓ Lower relative returns
+✓ Low transparency
+✓ Fees
+✓ Leverage can cause trouble
+✓ Survivorship skews industry’s
+performance results
+✓ Fees
+
+2 – Trading Strategies (1/3)
+▪ Convergence trade strategy: short an asset and long
+another because you expect that prices will converge.
+▪ Quantitative approach:
+▪ Hoped for convergence between long-term off-the-run (old issuance)
+and on-the-run (newly issued) US treasury bonds.
+▪ Played convergence on European, Japanese and US sovereign bonds
+and among European bonds:
+▪ Italian Lira treasury bill rates versus Lira Libor
+▪ Equity arbitrage:
+▪ Convergence of stocks of two companies announcing they will merge.
+
+2 – Limits to these Strategies (2/3)
+▪ Convergence trade often gives profit as long as price
+variations are “normal”:
+▪ No external choc (forgot about 1973 oil crisis, 1987 crash)
+▪ Two founders of LTCM received « Nobel Economic Prize » in 1997
+(Merton and Scholes) for « new method to determine the value of
+derivatives »
+▪ Profits on these trades are extremely low. Therefore,
+these trades have to be leveraged to make large profits.
+▪ In early 1998, LTCM had USD 5 billion in equity and had borrowed
+USD 125 billion (leverage of 25:1)
+
+2 – Off-putting features (3/3)
+▪ Fees of LTCM were extremely high:
+▪ Entry ticket to LTCM: USD 10 million.
+▪ Fees: 2% of invested capital + 25% of investment profits.
+▪ Fund would only start activity when USD 1 billion would have been
+collected.
+▪ Leverage made the fund very risky
+▪ Therefore, « hedge fund » is a misnomer.
+May and June
+1998
+▪
+Worst months ever
+▪
+May return -6.7%; June return -10,1%
+▪
+Represented a reduction of LTCM’s capital of USD 461 million
+▪
+No apparent reason
+▪
+All-times high for equity indexes
+▪
+Asian emerging markets were stable
+Salomon
+Smith Barney
+Inc.
+▪
+July 8, 1998 – Decided to disband its US arbitrage group
+▪
+Provoked unusual market movements which negatively impacted LTCM
+▪
+Believed the US capital market was mature
+▪
+Opportunities for arbitrage profits had lessened
+▪
+Higher risks and volatility
+US Treasury
+swap-spread
+July 1998
+▪
+LTCM’s strategy was to short US Treasury bonds in exchange for
+a fixed IRS of Libor + 62 bps
+▪
+Spread change due to unwindings and not technical changes
+3 – Movements & Effects (1/3)
+Russian
+default
+▪
+August 17, 1998 - Russian government defaulted on its own
+ruble denominated bonds – MARKET SHOCK
+▪
+LTCM did not have a big exposure but did suffer a loss.
+Black Friday
+August 21, 1998
+« worst day in the history of the Fund »
+▪
+US swap widened by 19 bps, compared to less than 1 bps on a
+normal day (linked to Russian default)
+▪
+International panic: « rush to liquidity » and “flight-to-quality”
+▪
+Panicked investors sold Japanese and European bonds to buy US Treasury
+bonds.
+▪
+LTCM has important short positions and suffered important losses both on US
+Treasury and UK Gilt swaps. Profits that were supposed to occur as the value
+of the bonds converged turned into huge losses as the value of the bonds
+diverged.
+▪
+Tellabs acquisition of Ciena Corp. cancelled
+▪
+LTCM suffered a big arbitration loss as spread between the two companies
+widened while LTCM was expecting a convergence of both stock-prices.
+TOTAL LOSS FOR THE DAY: USD 550 Million of LTCM
+
+3 – Movements & Effects (2/3)
+Principles
+Meeting
+August23,1998
+▪
+Managers kept reducing risk
+▪
+Other market players were also doing the same thing at any price: caused
+market disruptions
+▪
+Fund still had USD 4.08 Million of Working Capital (USD 2.95 BN in equity, USD
+230 MM in equity and USD 900 MM in a credit facility)
+▪
+Bear Stearns, a clearing agent, started to worry on LTCM’s
+exposures: asked LTCM to keep extra cash within Bear Stearns
+▪
+Doubts on creditworthiness
+▪
+LTCM was forced to liquidate to meet margin calls
+▪
+Net Asset Value continued to decline, fell below USD 1.5 billion
+▪
+Covenants on the syndicate credit facility could be triggered at any time
+
+3 – Movements & Effects (1/3)
+The market situation could not be considered normal anymore.
+Too many
+shocks had affected financial markets in a short period of time. Principles of
+LTMC should have understood that their strategy was not working anymore, it
+wasn’t adapted to the current financial markets.
+
+4 – Risk Management (1/2)
+Pre-Crisis Risk Management
+▪ Complex theoretical
+market: risk models
+▪ Hedging of long and short
+positions:
+▪ US swap spread
+▪ Interest only strip
+▪ Selling stock-index volatility
+▪ Others
+Crisis Risk Management
+▪ Decreased position of the
+least attractive risk-to-
+reward ratios in June
+▪ Additional cut of 5% in
+August
+▪ Salomon Smith disbanded
+US bond arbitrage group.
+
+4 – Prevention & limit of losses (1/2)
+
+Mistake 1
+Eliminated investments that were les profitable, too high
+leverage (31:1)
+▪
+Prevention:
+▪
+Selling off less-liquid positions
+▪
+Raising fresh capital
+▪
+Lower leverage ratio
+
+Mistake 2
+Used recent history to estimate risk and underestimated it
+▪
+Prevention:
+▪
+Take into account major events such as sovereign defaults and market
+disruptions
+▪
+Aggressively stress test the investment model
+
+Mistake 3
+Fund was not diversified enough
+▪
+Prevention:
+▪
+Invest in positions that do not share the same risk (i.e. liquidity and default risk)
+LIST OF BIGGEST LOSERS
+
+5 – Victims of LTCM’s demise
+VICTIMS
+▪ Direct victims of the demise of LTCM
+were investors who lost their capital.
+UBS was the biggest single loser
+with USD 690 million.
+▪ LTCM partners lost USD 1.1 billion
+and employees lost their jobs
+▪ The reputation of the hedge fund
+industry was strongly affected.
+▪ Federal Reserve’s moral authority
+was strongly damaged:
+▪ It was preaching the world to let big
+institutions fall but acted pretexting the
+« too big to fail » doctrine.
+UBS – USD 690 million
+Dresdner Bank – USD 145 million
+Sumitomo Bank – USD 100 million
+Bank of Italy – USD 100 million
+Crédit Suisse – USD 55 million
+Liechtenstein Global Trust – USD 30 million
+Merrill Lynch – USD 22 million
+Bear Stearns executives – USD 20 million
+Donald Marron, Chairman of PaineWebber – USD
+10 million
+Sandy Weill, co-CEO of Citigroup – USD 10 million
+McKinsey executives – USD 10 million
+Prudential Life Corp – USD 5.43 million
+
+5 – Beneficiaries of LTCM’s demise
+▪ LTCM’s shareholders and managers:
+▪ Received 10% of the USD 3.65 billion injected by 14 institutions in exchange of 90% of the equity
+capital of the fund
+▪ A large part of the managers even received management fees for rescuing the fund.
+▪ Short-sellers of LTCM shares before the collapse.
+▪ Market players that had established opposite positions to those unwound by
+
+LTCM BENEFICIARIES
+
+6 – Could it happen again ?
+▪ Hedge Fund investments become less unregulated
+▪ July 2010 – Dodd Frank Wall Street Reform Act
+▪ Hedge funds with more than USD 150 million in assets must register with the SEC
+▪ Overseas hedge funds with 15 or more US investors and managing at least USD 25 million have to
+register with the SEC
+▪ Have to provide information about their trades and portfolios
+▪
+Destined to help regulators fulfill their obligation to monitor and regulate systemic risk
+▪ November 2010 – EU Directive on Alternative Investment Fund Managers (for 2013)
+▪ Hedge Fund managers have to register with national regulatory authorities
+▪ Disclose investment strategies information on a more frequent basis:
+▪
+Hedge funds could have to hold larger amounts of capital
+▪
+Leverage could be peaked
+▪ Currently markets are highly volatile
+▪ Q3 2011 – Worst quarter for hedge funds since 2008
+▪ Almost every type of investment is affected (Hedge Fund Research – FT 10/10/11)
+▪ Volatility could provoke liquidity issues for hedge funds
+▪ Liquidity is crucial, it provoked the fall of Lehman Brothers
+▪ Advantage Plus (John Paulson fund) is down 47% year-to-date
+
+6 – Could it happen again ?
+▪ After LTCM’s demise, Hedge Funds deleveraged. However, other
+hedge funds experienced the same situation as LTCM (Amaranth
+Advisors in 2006).
+▪ Governments and Regulators have realized the importance of
+regulating all market players including hedge funds. However, in the
+past regulations have proven to be inefficient.
+▪ Human greed
+
+Sources
+▪
+Philippe Jorion – Risk Management Lessons from Long-Term Capital Management, published in: European
+Financial Management - September 6, 2000 – p. 277-300.
+▪
+Frederic S. Mishkin, Stanley Eakins, Financial Markets and Institutions (7th Edition). Published by Prentice
+Hall, January 13, 2011.
+▪
+Investment Company Institute, 2011 Investment Company Fact Book (51st Edition). Published at:
+www.icifactbook.org
+▪
+Kaplan Schweser, CFA Exam Level 1 Notes (2010). Published by Kaplan Schweser, 2009.
+▪
+David Shirreff – « The Losers » : http://riskinstitute.ch/146520.htm
+▪
+« Too Big to Fail ? » – Kevin Dowd – September 23, 1999 : http://www.trendfollowing.com/whitepaper/bp52.pdf
+▪
+Kimberly Amadeo – « What Was the LTCM Hedge Fund Crisis ? » – About.com :
+http://useconomy.about.com/od/themarkets/f/LTCM.htm
+▪
+Dan McCrum – “Hedge funds suffer worst quarter since 2008” – Financial Times – October 10, 2011:
+http://www.ft.com/intl/cms/s/0/70c79c78-f11b-11e0-b56f-00144feab49a.html#axzz1aPtRuqpT
+▪
+Dan McCrum – « Paulson’s hedge funds face steep challenge » – Financial Times – October 9, 2011:
+http://www.ft.com/intl/cms/s/0/b0a3151c-f278-11e0-931e-00144feab49a.html#axzz1aPtRuqpT
+▪
+Marc Aragon – « Brève Histoire d’un désastre financier: LCTM – May 2, 2007 : http://www.marc-
+aragon.net/article-6534063.html
