@@ -31,21 +31,21 @@ This GARCH study is two-step. First, ARMA equations are estimated to extract eac
 
 However, before estimating the model, some filtration is needed. This is because the Chinese and US markets don't have synchronous trading hours or completely common holidays (**Figures 1 and 2**). Depending on your study, these may need to be corrected for.
 
-![trading hours](https://raw.githubusercontent.com/garthmortensen/finance/master/images/time.png)
+![trading hours](./images/time.png)
 
-![trading days](https://raw.githubusercontent.com/garthmortensen/finance/master/images/tradingdays.png)
+![trading days](./images/tradingdays.png)
 
 Once your data is prepped, you can begin by feeding the return series into an autoregressive moving average (ARMA) model. This renders a white-noise, zero-mean process. The error term from this can be interpreted as the unexpected return or market shock (**Figure 3**). Cool?
 
-![GARCH eq](https://raw.githubusercontent.com/garthmortensen/finance/master/images/ARMA.png)
+![GARCH eq](./images/ARMA.png)
 
-![market shock](https://raw.githubusercontent.com/garthmortensen/finance/master/images/market%20shock.png)
+![market shock](./images/market%20shock.png)
 
 Error term in hand, you can continue to the next step: GARCH. Just as before, you estimate the parameters and pull out the residuals. This resultant series reveals conditional variance. Finally, apply the square root of time rule to obtain conditional volatility (**Figure 4**).
 
-![lambda](https://raw.githubusercontent.com/garthmortensen/finance/master/images/GARCH.png)
+![lambda](./images/GARCH.png)
 
-![EWMA Covariance](https://raw.githubusercontent.com/garthmortensen/finance/master/images/GARCH%20uni.png)
+![EWMA Covariance](./images/GARCH%20uni.png)
 
 Kevin Sheppard's [UCSD GARCH Toolbox](https://www.kevinsheppard.com/code/matlab/ucsd-garch/) and James P. LeSage's [Econometrics Toolbox](https://www.spatial-econometrics.com/) are used in the study.
 
@@ -55,9 +55,9 @@ Finally, we have the multivariate part.
 
 Because this study examines how one market's volatility impacts another, we still need to see how they interact. We're faced with several paths to take, each varying in their complexity. The easiest is to stitch together the two univariate volatility series together using a constant correlation coefficient (CCC). Its assumption that correlation remains constant goes against most real world observations. This may be a most-welcome simplification if you're juggling 15 indices, but a more sophisticated approach allows it to change with time. This can be done with the dynamic conditional correlation (DCC) method. To calculate this, one may follow a technique developed by RiskMetrics, where exponentially weighted moving averages are weighted by customized lambda parameters (**Figure 5**).
 
-![lambda](https://raw.githubusercontent.com/garthmortensen/finance/master/images/lambda.png)
+![lambda](./images/lambda.png)
 
-![EWMA covariance](https://raw.githubusercontent.com/garthmortensen/finance/master/images/EWMA%20copy.png)
+![EWMA covariance](./images/EWMA%20copy.png)
 
 In fact, there are many, many, alternative methods. The entire GARCH model universe consists of at least 300 variations. Some incorporate asymmetries, fat-tails, or bi-directional spillovers. But since the vast majority of these, especially multivariate estimation, aren't supported by software, your choices will be limited by your programming proficiency. Despite your methodology, in the end you're left with a view of how conditional volatility in one market impacts that in another. My specific case study and results are found here.
 
